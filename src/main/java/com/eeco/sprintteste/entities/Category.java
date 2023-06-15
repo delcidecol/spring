@@ -1,13 +1,16 @@
 package com.eeco.sprintteste.entities;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 
 @Entity
 @Table(name = "tb_category")
@@ -44,6 +47,9 @@ public class Category implements Serializable {
 		this.name = name;
 	}
 
+	@Transient
+	private Set<Product> products = new HashSet<>();
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -59,6 +65,10 @@ public class Category implements Serializable {
 			return false;
 		Category other = (Category) obj;
 		return Objects.equals(id, other.id);
+	}
+
+	public Set<Product> getProducts() {
+		return products;
 	}
 
 }
