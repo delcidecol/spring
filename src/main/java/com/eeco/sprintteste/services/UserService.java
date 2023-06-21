@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.eeco.sprintteste.entities.User;
 import com.eeco.sprintteste.repositories.UserRepository;
+import com.eeco.sprintteste.services.exceptions.ResourceNotFoundException;
 
 @Service
 public class UserService {
@@ -22,7 +23,7 @@ public class UserService {
 
 	public User findById(Long id) {
 		Optional<User> obj = repository.findById(id);
-		return obj.get();
+		return obj.orElseThrow(() -> new ResourceNotFoundException(id));  //foi mudado o obj.get porque foi feito tratamento da exceção
 	}
 
 	// operação para inserir no banco de dados um novo objeto do tipo user
