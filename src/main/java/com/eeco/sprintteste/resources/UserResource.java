@@ -43,7 +43,7 @@ public class UserResource {
 	public ResponseEntity<User> insert(@RequestBody User obj){
 		obj = service.insert(obj);
 		//para que o retorno seja 201 que mostra que deu certo
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}/")
 				.buildAndExpand(obj.getId()).toUri();
 		
 		return ResponseEntity.created(uri).body(obj);

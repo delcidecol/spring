@@ -54,5 +54,6 @@ public class OrderItemPK implements Serializable {
 		OrderItemPK other = (OrderItemPK) obj;
 		return Objects.equals(order, other.order) && Objects.equals(product, other.product);
 	}
-
+  //http://34.234.135.184/delcidecol/pousada.git
+	// teste ....
 }
